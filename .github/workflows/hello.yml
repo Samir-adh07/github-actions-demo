@@ -1,13 +1,20 @@
-name: Hello From Samir's Project
+name: Failing Test Demo
 
 on: [push]
 
 jobs:
-  say-hello:
+  fail-test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Print Hello
-        run: echo "👋 Hey Samir, GitHub Actions is running on your project!"
+      - name: This will succeed
+        run: echo "✅ Hello, this step works fine."
+
+      - name: This will fail
+        run: nonexistent-command-123
+
+      - name: This will never run
+        run: echo "❌ You'll never see this because the previous step failed."
